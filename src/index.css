@@ -1,69 +1,158 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* Andy Bell's CSS Resets */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* https://piccalil.li/blog/a-modern-css-reset */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/* Remove default margin */
+* {
   margin: 0;
+  padding: 0;
+  font: inherit;
+
+  --container-md: 94%;
+  --container-lg: 85%;
+
+  --transition: all 500ms ease-in-out;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* NAVBAR */
+.nav {
+  padding-block: .8rem;
+  padding-left: 5%;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  margin: 0 auto;
+  /* background-color: green; */
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: black;
+  font-family: 'Rubik Puddles', cursive;
+  /* margin-bottom: .6rem; */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.container {
+  width: var(--container-md);
+  margin: 0 auto;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+  grid-auto-columns: 2;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.photo {
+  border-radius: 10px;
+  aspect-ratio: 1/1.5;
+  width: 100%;
+  max-height: 450px;
+  transition: var(--transition);
+}
+
+.photoGallery {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 2rem;
+  padding-block: 1rem;
+}
+
+.photoGallery form {
+  align-self: center;
+  position: relative;
+}
+
+.photoGallery form>input {
+  padding-block: .3rem;
+  padding-left: 1.875rem;
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  top: 9px;
+  left: 5px;
+  font-size: 1.3rem;
+}
+
+.photoGallery>div p {
+  margin-top: 0.5rem;
+  font-family: 'Righteous', cursive;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.not-found h1 {
+  font-size: 3rem;
+}
+
+.not-found a {
+  text-decoration: none;
+  font-size: 1.3rem;
 }
